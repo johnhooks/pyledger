@@ -1,0 +1,15 @@
+{
+  "$schema": "../schema/paycheck-schema.json",
+  "employeeId": "1",
+  "employeeName": "John Hooks II",
+  "netPay": "6181.92",
+  "payDate": "2022-01-01",
+  "payPeriodStartDate": "2022-01-01",
+  "payPeriodEndDate": "2022-01-31",
+  "salary": "6750.00",
+  "taxes": {
+    "federalIncomeTax": "51.70",
+    "socialSecurityEmployee": "418.50",
+    "medicareEmployee": "97.88"
+  }
+}

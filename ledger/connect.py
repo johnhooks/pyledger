@@ -1,7 +1,7 @@
 import pyodbc
 from .constants import connection_string
 
-def connect():
+def connect_qodbc():
     connection = pyodbc.connect(connection_string)
     cursor = connection.cursor()
 

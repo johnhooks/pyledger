@@ -8,7 +8,6 @@
 			"description": "The schema to verify this document against.",
 			"type": "string"
 		},
-
 		"federal": {
 			"description": "US Federal Payroll Taxes",
 			"type": "object",
@@ -16,22 +15,22 @@
 				"socialSecurityEmployer": {
 					"description": "The employer's portion of the social security tax",
 					"type": "string",
-					"pattern": "^(\\d+)\\.(\\d{2,4})$"
+					"pattern": "^\\d+\\.\\d{2,4}$"
 				},
 				"socialSecurityEmployee": {
 					"description": "The employee's portion of the social security tax",
 					"type": "string",
-					"pattern": "^(\\d+)\\.(\\d{2,4})$"
+					"pattern": "^\\d+\\.\\d{2,4}$"
 				},
 				"medicareEmployer": {
 					"description": "The employer's portion of the medicare tax",
 					"type": "string",
-					"pattern": "^(\\d+)\\.(\\d{2,4})$"
+					"pattern": "^\\d+\\.\\d{2,4}$"
 				},
 				"medicareEmployee": {
 					"description": "The employee's portion of the medicare tax",
 					"type": "string",
-					"pattern": "^(\\d+)\\.(\\d{2,4})$"
+					"pattern": "^\\d+\\.\\d{2,4}$"
 				}
 			},
 			"required": [
@@ -50,9 +49,9 @@
 					"type": "object",
 					"properties": {
 						"caresFundEmployee": {
-							"description": "The Washington State Cares Fund employee premium",
+							"description": "The employee's premium rate for the Washington State Cares Fund",
 							"type": "string",
-							"pattern": "^(\\d+)\\.(\\d{2,4})$"
+							"pattern": "^\\d+\\.\\d{2,4}$"
 						}
 					}
 				}
