@@ -1,0 +1,30 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Rate",
+	"description": "A set of tax rates for a specific calendar year",
+	"type": "object",
+	"properties": {
+		"socialSecurityEmployer": {
+			"description": "The employer's portion of the social security tax",
+			"type": "string"
+		},
+		"socialSecurityEmployee": {
+			"description": "The employee's portion of the social security tax",
+			"type": "string"
+		},
+		"medicareEmployer": {
+			"description": "The employer's portion of the medicare tax",
+			"type": "string"
+		},
+		"medicareEmployee": {
+			"description": "The employee's portion of the medicare tax",
+			"type": "string"
+		}
+	},
+	"required": [
+		"socialSecurityEmployer",
+		"socialSecurityEmployee",
+		"medicareEmployer",
+		"medicareEmployee"
+	]
+}
