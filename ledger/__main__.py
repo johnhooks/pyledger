@@ -7,15 +7,16 @@ from .connect import connect
 
 # connect()
 
-path = Path(__file__).parent / ".." / "schema" / "rate-schema.json"
-file = open(path, "r")
-schema = json.load(file)
+rate_schema_path = Path(__file__).parent / ".." / "schema" / "rate-schema.json"
+rate_schema_file = open(rate_schema_path, "r")
+rate_schema = json.load(rate_schema_file)
 
-data = {"socialSecurityEmployer": "0.062", "socialSecurityEmployee": "0.062",
-        "medicareEmployer": "0.0145", "medicareEmployee": "0.0145"}
+rate_data_path = Path(__file__).parent / ".." / "data" / "tax-rates-2022.json"
+rate_data_file = open(rate_data_path, "r")
+rate_data = json.load(rate_data_file)
 
-jsonschema.validate(instance=data, schema=schema)
+jsonschema.validate(instance=rate_data, schema=rate_schema)
 
-ssEmployee = Money(data["socialSecurityEmployee"])
+ssEmployee = Money(rate_data["federal"]["socialSecurityEmployee"])
 
 print(ssEmployee)

@@ -37,7 +37,10 @@ connection.close()
 ### Changes to the basic configuration
 
 - Change the IP Address to `127.0.0.1`
-- **Did not change the default encryption password** (I had problems when I did)
+- **Did not change the default encryption password**
+
+    I had problems when I did. I had to follow the steps in *Solution 2* under this [QODBC Knowledgebase post](https://support.flexquarters.com/esupport/index.php?/Knowledgebase/Article/View/2642/0/qodbc-desktop-troubleshooting---getting-wrong-client-encyptkey-setting-error) to get everything working.
+
 
 
 ### Date Comparision
