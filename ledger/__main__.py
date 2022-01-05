@@ -3,8 +3,14 @@ import jsonschema
 from stockholm import Money
 from stockholm.currency import USD
 
-from .connect import connect_qodbc
+from .connect import qodbc_cursor
 from .jsonloader import jsonloader
+
+with qodbc_cursor() as cursor:
+    cursor.execute("SELECT * FROM Check WHERE TxnDate >= {d '2022-01-04'}")
+
+    for row in cursor.fetchall():
+        print(row)
 
 # connect_qodbc()
 

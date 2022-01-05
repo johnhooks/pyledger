@@ -1,15 +1,16 @@
-import pyodbc
+from contextlib import contextmanager
+from collections.abc import Iterator
+from pyodbc import connect, Cursor
 from .constants import connection_string
 
-def connect_qodbc():
-    connection = pyodbc.connect(connection_string)
+@contextmanager
+def qodbc_cursor() -> Iterator[Cursor]:
+    """Aquire odbc curser to QODBC QuickBooks.
+    """
+    connection = connect(connection_string)
     cursor = connection.cursor()
-
-    cursor.execute("SELECT * FROM Check WHERE TxnDate >= {d '2022-01-04'}")
-
-    for row in cursor.fetchall():
-        print(row)
-
-    cursor.close()
-
-    connection.close()
+    try:
+        yield cursor
+    finally:
+        cursor.close()
+        connection.close()
