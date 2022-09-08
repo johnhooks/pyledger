@@ -4,7 +4,7 @@ from pyodbc import connect, Cursor
 from .constants import connection_string
 
 @contextmanager
-def qodbc_cursor() -> Iterator[Cursor]:
+def qbcursor() -> Iterator[Cursor]:
     """Aquire odbc curser to QODBC QuickBooks.
     """
     connection = connect(connection_string)

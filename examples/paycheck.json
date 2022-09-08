@@ -1,15 +1,15 @@
 {
   "$schema": "../schema/paycheck-schema.json",
-  "employeeId": "1",
-  "employeeName": "John Hooks II",
-  "netPay": "6181.92",
-  "payDate": "2022-01-01",
-  "payPeriodStartDate": "2022-01-01",
-  "payPeriodEndDate": "2022-01-31",
+  "employee_id": "1",
+  "employee_name": "John Hooks II",
+  "net_pay": "6181.92",
+  "pay_date": "2022-01-01",
+  "pay_period_start_date": "2022-01-01",
+  "pay_period_end_date": "2022-01-31",
   "salary": "6750.00",
   "taxes": {
-    "federalIncomeTax": "51.70",
-    "socialSecurityEmployee": "418.50",
-    "medicareEmployee": "97.88"
+    "federal_income_tax": "51.70",
+    "social_security_employee": "418.50",
+    "medicare_employee": "97.88"
   }
 }

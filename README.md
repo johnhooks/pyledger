@@ -69,6 +69,10 @@ connection.close()
 
 ### 3rd Party Packages Used
 
+- [pyodbc](https://github.com/mkleehammer/pyodbc)
+
+    [Documentation](https://github.com/mkleehammer/pyodbc/wiki)
+
 - [stockholm](https://github.com/kalaspuff/stockholm)
 
     When using advanced string formatting, there can not be space at the end of the curly braces.
@@ -79,3 +83,9 @@ connection.close()
     ```
 
 - [jsonschema](https://github.com/Julian/jsonschema)
+
+    [Documentation](https://python-jsonschema.readthedocs.io/en/v4.3.1/)
+
+### Export Formats
+
+- [Washington State Employment Security Department](https://esd.wa.gov/employer-taxes/importing-wage-files)

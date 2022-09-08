@@ -1,0 +1,50 @@
+{
+  "$schema": "../schema/accounts-schema.json",
+  "accounts": [
+    {
+      "name": "Federal Withholding Employee",
+      "list_id": "800000AF-1641421397",
+      "type": "OtherCurrentLiability"
+    },
+    {
+      "name": "Medicare Employee",
+      "list_id": "800000AE-1641421375",
+      "type": "OtherCurrentLiability"
+    },
+    {
+      "name": "Social Security Employee",
+      "list_id": "800000AD-1641421331",
+      "type": "OtherCurrentLiability"
+    },
+    {
+      "name": "Medicare Employer",
+      "list_id": "800000AC-1641421277",
+      "type": "OtherCurrentLiability"
+    },
+    {
+      "name": "Social Security Employer",
+      "list_id": "800000AB-1641421243",
+      "type": "OtherCurrentLiability"
+    },
+    {
+      "name": "WA Cares Fund Employee",
+      "list_id": "800000B0-1641421424",
+      "type": "OtherCurrentLiability"
+    },
+    {
+      "name": "Payroll Clearing",
+      "list_id": "8000008E-1423695971",
+      "type": "OtherCurrentLiability"
+    },
+    {
+      "name": "Payroll Tax Expense",
+      "list_id": "8000002B-1192809267",
+      "type": "Expense"
+    },
+    {
+      "name": "Wage Expense",
+      "list_id": "80000091-1423696365",
+      "type": "Expense"
+    }
+  ]
+}

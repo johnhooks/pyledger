@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Rate",
-  "description": "A set of tax rates for a specific calendar year",
+  "title": "Paycheck",
+  "description": "A paycheck to an employee for a specific pay period.",
   "type": "object",
   "properties": {
     "$schema": {
@@ -10,77 +10,83 @@
     },
     "bonus": {
       "description": "The employee's bonus amount",
-      "type": "string",
-      "pattern": "^\\d+\\.\\d{2}$"
+      "$ref": "#/$defs/money"
     },
-    "employeeId": {
+    "employee_id": {
       "description": "The employee identification",
       "type": "string"
     },
-    "employeeName": {
+    "employee_name": {
       "description": "The employee's name",
       "type": "string"
     },
-    "netPay": {
+    "net_pay": {
       "description": "The employee's net pay for the pay period",
-      "type": "string",
-      "pattern": "^\\d+\\.\\d{2}$"
+      "$ref": "#/$defs/money"
     },
-    "payDate": {
+    "pay_date": {
       "description": "The date of the paycheck transaction",
-      "type": "string",
-      "pattern": "^\\d{4}-((0[1-9])|(1[0-2]))-[0123]\\d"
+      "$ref": "#/$defs/date"
     },
-    "payPeriodStartDate": {
+    "pay_period_start_date": {
       "description": "The start date of the pay period",
-      "type": "string",
-      "pattern": "^\\d{4}-((0[1-9])|(1[0-2]))-[0123]\\d"
+      "$ref": "#/$defs/date"
     },
-    "payPeriodEndDate": {
+    "pay_period_end_date": {
       "description": "The end date of the pay period",
-      "type": "string",
-      "pattern": "^\\d{4}-((0[1-9])|(1[0-2]))-[0123]\\d"
+      "$ref": "#/$defs/date"
     },
     "salary": {
       "description": "The employee's salary amount",
-      "type": "string",
-      "pattern": "^\\d+\\.\\d{2}$"
+      "$ref": "#/$defs/money"
     },
     "taxes": {
       "description": "The employee's payroll tax withholding",
       "type": "object",
       "properties": {
-        "federalIncomeTax": {
+        "federal_income_tax": {
           "description": "The employee's federal income tax withholding",
-          "type": "string",
-          "pattern": "^\\d+\\.\\d{2}$"
+          "$ref": "#/$defs/money"
         },
-        "socialSecurityEmployee": {
+        "social_security_employee": {
           "description": "The employee's portion of the social security tax",
-          "type": "string",
-          "pattern": "^\\d+\\.\\d{2}$"
+          "$ref": "#/$defs/money"
         },
-        "medicareEmployee": {
+        "medicare_employee": {
           "description": "The employee's portion of the medicare tax",
-          "type": "string",
-          "pattern": "^\\d+\\.\\d{2}$"
+          "$ref": "#/$defs/money"
         },
-        "waCaresFundEmployee": {
+        "wa_cares_fund_employee": {
           "description": "The employee's premium for the Washington State Cares Fund",
-          "type": "string",
-          "pattern": "^\\d+\\.\\d{2}$"
+          "$ref": "#/$defs/money"
         }
       },
       "required": [
-        "federalIncomeTax",
-        "socialSecurityEmployee",
-        "medicareEmployee"
+        "federal_income_tax",
+        "social_security_employee",
+        "medicare_employee"
       ],
       "additionalProperties": false
     }
   },
   "required": [
-    "employeeId", "employeeName", "netPay", "payDate", "payPeriodStartDate", "payPeriodEndDate", "taxes"
+    "employee_id",
+    "employee_name",
+    "net_pay",
+    "pay_date",
+    "pay_period_start_date",
+    "pay_period_end_date",
+    "taxes"
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$defs": {
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-((0[1-9])|(1[0-2]))-[0123]\\d"
+    },
+    "money": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d{2}$"
+    }
+  }
 }

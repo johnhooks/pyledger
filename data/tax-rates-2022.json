@@ -1,14 +1,14 @@
 {
-  "$schema": "../schema/rate-schema.json",
+  "$schema": "../schema/tax-rate-schema.json",
   "federal": {
-    "socialSecurityEmployer": "0.062",
-    "socialSecurityEmployee": "0.062",
-    "medicareEmployer": "0.0145",
-    "medicareEmployee": "0.0145"
+    "social_security_employer": "0.062",
+    "social_security_employee": "0.062",
+    "medicare_employer": "0.0145",
+    "medicare_employee": "0.0145"
   },
   "state": {
     "wa": {
-      "caresFundEmployee": "0.0058"
+      "cares_fund_employee": "0.0058"
     }
   }
 }

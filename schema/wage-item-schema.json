@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Payroll Wage Item",
+  "description": "A payroll wage item type",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "description": "The schema to verify this document against.",
+      "type": "string"
+    },
+    "name": {
+      "description": "The name of the wage item.",
+      "type": "string"
+    },
+    "wage_type": {
+      "description": "The wage type of the wage item.",
+      "type": "string",
+      "enum": [
+        "bonus",
+        "commission",
+        "hourly_overtime",
+        "hourly_regular",
+        "hourly_sick",
+        "hourly_vacation",
+        "salary_regular",
+        "salary_sick",
+        "salary_vacation"
+      ]
+    },
+    "expense_account_id": {
+      "description": "The id of the expense account associated with the payroll item.",
+      "type": "string"
+    },
+    "expense_account_full_name": {
+      "description": "The full name of the expense account associated with the payroll item.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "wage_type",
+    "expense_account_id",
+    "expense_account_full_name"
+  ],
+  "additionalProperties": false
+}

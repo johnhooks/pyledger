@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Account List",
+  "description": "List of QuickBooks accounts",
+  "properties": {
+    "$schema": {
+      "description": "The schema to verify this document against.",
+      "type": "string"
+    },
+    "accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/account"
+      }
+    }
+  },
+  "required": [
+    "accounts"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "account": {
+      "title": "Account",
+      "description": "Data mapped to a QuickBooks Account",
+      "type": "object",
+      "properties": {
+        "list_id": {
+          "description": "The account identification in QuickBooks.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of the account in QuickBooks.",
+          "type": "string"
+        },
+        "type": {
+          "description": "The type of account in QuickBooks.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "list_id",
+        "name",
+        "type"
+      ]
+    }
+  }
+}

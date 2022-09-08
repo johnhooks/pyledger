@@ -1,0 +1,97 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Rate",
+	"description": "A set of tax rates for a specific calendar year.",
+	"type": "object",
+	"properties": {
+		"$schema": {
+			"description": "The schema to verify this document against.",
+			"type": "string"
+		},
+		"federal": {
+			"description": "US Federal Payroll Taxes",
+			"type": "object",
+			"properties": {
+				"social_security_employer": {
+					"description": "The employer's portion of the social security tax.",
+					"$ref": "#/$defs/decimal"
+				},
+				"social_security_employee": {
+					"description": "The employee's portion of the social security tax.",
+					"$ref": "#/$defs/decimal"
+				},
+				"medicare_employer": {
+					"description": "The employer's portion of the medicare tax.",
+					"$ref": "#/$defs/decimal"
+				},
+				"medicare_employee": {
+					"description": "The employee's portion of the medicare tax.",
+					"$ref": "#/$defs/decimal"
+				}
+			},
+			"required": [
+				"social_security_employer",
+				"social_security_employee",
+				"medicare_employer",
+				"medicare_employee"
+			]
+		},
+		"state": {
+			"description": "State Payroll Taxes",
+			"type": "object",
+			"properties": {
+				"wa": {
+					"description": "Washington State Payroll Taxes",
+					"type": "object",
+					"properties": {
+						"cares_fund_employee": {
+							"description": "The employee's premium rate for the Washington State Cares Fund.",
+							"$ref": "#/$defs/decimal"
+						}
+					}
+				}
+			},
+			"additionalProperties": false
+		}
+	},
+	"required": [
+		"federal",
+		"state"
+	],
+	"additionalProperties": false,
+	"$defs": {
+		"decimal": {
+			"type": "string",
+			"pattern": "^\\d+\\.\\d+$"
+		},
+		"tax": {
+			"description": "A tax object.",
+			"type": "object",
+			"properties": {
+				"entity": {
+					"description": "The entity which collects the tax.",
+					"type": "string"
+				},
+				"name": {
+					"description": "The name of the tax.",
+					"type": "string"
+				},
+				"liability_account": {
+					"description": "The QuickBooks ListId of the liability account associated with the tax.",
+					"type": "string"
+				},
+				"rate": {
+					"description": "The decimal representation of the tax.",
+					"type": "#/$defs/decimal"
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"entity",
+				"name",
+				"liability_account",
+				"rate"
+			]
+		}
+	}
+}

@@ -1,0 +1,202 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Configuration",
+  "description": "The configuration of the ledger program.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "description": "The schema to verify this document against.",
+      "type": "string"
+    },
+    "accounts": {
+      "description": "The QuickBooks accounts list.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/account"
+      }
+    },
+    "paychecks": {
+      "description": "The paycheck list.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/paycheck"
+      }
+    },
+    "taxes": {
+      "description": "The payroll tax list.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/tax"
+      }
+    }
+  },
+  "required": [
+    "accounts",
+    "taxes"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-((0[1-9])|(1[0-2]))-[0123]\\d"
+    },
+    "decimal": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "money": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d{2}$"
+    },
+    "account": {
+      "title": "Account",
+      "description": "Data mapped to a QuickBooks Account",
+      "type": "object",
+      "properties": {
+        "list_id": {
+          "description": "The QuickBooks ListId of the account.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of the account in QuickBooks.",
+          "type": "string"
+        },
+        "type": {
+          "description": "The type of account in QuickBooks.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "list_id",
+        "name",
+        "type"
+      ]
+    },
+    "entity": {
+      "description": "A tax object.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name of the entity.",
+          "type": "string"
+        }
+      }
+    },
+    "paycheck": {
+      "description": "A paycheck object.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique paycheck identification.",
+          "type": "string"
+        },
+        "employee_id": {
+          "description": "Unique employee identification.",
+          "type": "string"
+        },
+        "employee_name": {
+          "description": "The employee's name",
+          "type": "string"
+        },
+        "pay_date": {
+          "description": "The date of the paycheck transaction",
+          "$ref": "#/$defs/date"
+        },
+        "pay_period_start_date": {
+          "description": "The start date of the pay period",
+          "$ref": "#/$defs/date"
+        },
+        "pay_period_end_date": {
+          "description": "The end date of the pay period",
+          "$ref": "#/$defs/date"
+        },
+        "additionalProperties": false,
+        "required": [
+          "employee_id",
+          "employee_name",
+          "pay_date",
+          "pay_period_start_date",
+          "pay_period_end_date"
+        ]
+      }
+    },
+    "tax": {
+      "description": "A tax object.",
+      "type": "object",
+      "properties": {
+        "entity": {
+          "description": "The entity which collects the tax.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of the tax.",
+          "type": "string"
+        },
+        "account": {
+          "description": "The QuickBooks ListId of the liability account associated with the tax.",
+          "type": "string"
+        },
+        "rate": {
+          "description": "The decimal representation of the tax.",
+          "$ref": "#/$defs/decimal"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "entity",
+        "name",
+        "account",
+        "rate"
+      ]
+    },
+    "paycheck_line": {
+      "note": "Maybe this should actually just be linked to the actual transaction in QuickBooks, and it should be looked up every time",
+      "description": "A line item of paycheck transaction.",
+      "type": "object",
+      "properties": {
+        "account_list_id": {
+          "description": "The QuickBooks ListId of the account referenced by the line item.",
+          "type": "string"
+        },
+        "account_name": {
+          "description": "The name of the account referenced by the line item.",
+          "type": "string"
+        },
+        "date": {
+          "description": "The date of the line item.",
+          "$ref": "#/$defs/date"
+        },
+        "credit": {
+          "description": "The credit amount of the line item.",
+          "$ref": "#/$defs/money"
+        },
+        "debit": {
+          "description": "The credit amount of the line item.",
+          "$ref": "#/$defs/money"
+        },
+        "memo": {
+          "description": "The memo describing the line item."
+        },
+        "wage_type": {
+          "description": "The wage type of the line item.",
+          "type": "string",
+          "enum": [
+            "bonus",
+            "commission",
+            "hourly_overtime",
+            "hourly_regular",
+            "hourly_sick",
+            "hourly_vacation",
+            "salary_regular",
+            "salary_sick",
+            "salary_vacation"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "txn_date"
+      ]
+    }
+  }
+}
